@@ -1,0 +1,13 @@
+{
+  "name": "haxe-node-libs",
+  "url": "https://github.com/proletariatgames/haxe-node-modules",
+  "license": "MIT",
+  "tags": ["node"],
+  "description": "Collection of Haxe bindings for various npm modules",
+  "version": "0.0.1",
+  "releasenote": "initial version",
+  "contributors": [],
+  "dependencies": {
+      "nodejs": ""
+    }
+}
