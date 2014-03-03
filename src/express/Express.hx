@@ -6,6 +6,8 @@ typedef MiddleWare = Request->Response->Dynamic->Void;
 
 typedef Request = { > NodeHttpServerReq,
   var body : Dynamic;
+  var query : Dynamic;
+  var params : Dynamic;
 
   // Passport
   var user : Dynamic;
