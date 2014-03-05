@@ -132,6 +132,7 @@ typedef RedisClient = {
 
 extern class Redis {
   public static inline var SHOW_SCORES:String = "WITHSCORES";
+  @:overload(function(port:Int, host:String, ?options:Dynamic):RedisClient {})
   public function createClient(port:Int, host:String) : RedisClient;
 }
 
