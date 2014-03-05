@@ -84,6 +84,8 @@ typedef RedisClient = {
 
   // hash
   function hset(k:String,f:String,v:String,cb:IntegerReply):Void;
+  @:overload(function(k:Dynamic,f:String,cb:BulkReply):Void {})
+  @:overload(function(k:String,f:Dynamic,cb:BulkReply):Void {})
   function hget(k:String,f:String,cb:BulkReply):Void;
   function hsetnx(k:String,f:String,v:String,cb:IntegerReply):Void;
   @:overload(function(k:String, f:Dynamic, cb:StatusReply):Void {})
