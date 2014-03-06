@@ -8,6 +8,7 @@ typedef Request = { > NodeHttpServerReq,
   var body : Dynamic;
   var query : Dynamic;
   var params : Dynamic;
+  var session : Dynamic;
 
   // Passport
   var user : Dynamic;
