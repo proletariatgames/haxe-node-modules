@@ -123,12 +123,16 @@ typedef RedisClient = {
 
   // Pub/Sub
   function on(event:String, callback:Dynamic) : Void;
+  function once(event:String, callback:Dynamic) : Void;
   function removeListener(event:String, callback:Dynamic) : Void;
   function subscribe(channel:String) : Void;
   function unsubscribe(channel:String) : Void;
   function publish(channel:String, value:String, cb:IntegerReply) : Void;
 
   function quit():Void;
+  function end():Void;
+
+  public var connected:Bool;
 }
 
 
@@ -136,6 +140,8 @@ extern class Redis {
   public static inline var SHOW_SCORES:String = "WITHSCORES";
   @:overload(function(port:Int, host:String, ?options:Dynamic):RedisClient {})
   public function createClient(port:Int, host:String) : RedisClient;
+
+  public var debug_mode : Bool;
 }
 
 @:native("RedisStore")
