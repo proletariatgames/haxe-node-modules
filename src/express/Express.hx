@@ -57,6 +57,7 @@ typedef Request = { > NodeHttpServerReq,
   public function notIn(options:Dynamic) : Request;
   public function min(val:Int) : Request;
   public function max(val:Int) : Request;
+  public function get(header:String) : Dynamic;
 
   public function sanitize() : Request;
   public function filter() : Request;
@@ -64,6 +65,7 @@ typedef Request = { > NodeHttpServerReq,
 }
 
 typedef Response = { > NodeHttpServerResp,
+  function set(header:String, value:Dynamic) : Void;
   function status(code:Int) : Void;
   @:overload(function () : Void {})
   @:overload(function (code : Int) : Void {})
