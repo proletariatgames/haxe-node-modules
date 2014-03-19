@@ -42,13 +42,14 @@ typedef RedisClient = {
   function incrby(k:String,by:Int,cb:IntegerReply):Void;
   function decr(k:String,cb:IntegerReply):Void;
   function decrby(k:String,by:Int,cb:IntegerReply):Void;
-  function setnx(k:String,v:String,cb:Err->Bool->Void):Void;
+  function setnx(k:String,v:String,cb:Err->Int->Void):Void;
   function mset(ks:Array<Dynamic>,cb:Err->Bool->Void):Void;
-  function msetnx(ks:Array<Dynamic>,cb:Err->Bool->Void):Void;
+  function msetnx(ks:Array<Dynamic>,cb:Err->Int->Void):Void;
   function mget(ks:Array<String>,cb:Err->Array<String>->Void):Void;
   function getset(k:String,v:String,cb:StatusReply):Void;
   function append(k:String,v:String,cb:IntegerReply):Void;
   function substr(k:String,s:Int,e:Int,cb:StatusReply):Void;
+  function psetex(k:String,t:Int,v:Dynamic,cb:StatusReply):Void;
   function setex(k:String,t:Int,v:Dynamic,cb:StatusReply):Void;
 
   // lists
