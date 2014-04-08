@@ -71,6 +71,10 @@ typedef Response = { > NodeHttpServerResp,
   @:overload(function (code : Int) : Void {})
   @:overload(function (code : Int, value : Dynamic) : Void {})
   function send(value : Dynamic) : Void;
+  @:overload(function () : Void {})
+  @:overload(function (code : Int) : Void {})
+  @:overload(function (code : Int, value : Dynamic) : Void {})
+  function json(value : Dynamic) : Void;
 }
 
 extern class Express {
