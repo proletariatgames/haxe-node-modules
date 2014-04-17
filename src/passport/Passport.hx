@@ -17,6 +17,9 @@ extern class Passport {
 
   public function session() : MiddleWare;
 
+  @:overload(function (strategy:Array<String>, options:Dynamic) : MiddleWare {})
+  @:overload(function (strategy:Array<String>, callback:String -> Dynamic -> Dynamic -> Void) : MiddleWare {})
+  @:overload(function (strategy:Array<String>, options:Dynamic=null, callback:String -> Dynamic -> Dynamic -> Void=null) : MiddleWare {})
   @:overload(function (strategy:String, options:Dynamic) : MiddleWare {})
   @:overload(function (strategy:String, callback:String -> Dynamic -> Dynamic -> Void) : MiddleWare {})
   public function authenticate(strategy:String, options:Dynamic=null,
@@ -45,4 +48,10 @@ extern class BearerStrategy extends Strategy {
 extern class BasicStrategy extends Strategy {
   @:overload(function (verify:String->String->(String->Dynamic->Void)->Void ) : Void {})
   public function new(options:Dynamic, verify:String->String->(String->Dynamic->Void)->Void);
+}
+
+@:native("LocalAPIKeyStrategy")
+extern class LocalAPIKeyStrategy extends Strategy {
+  @:overload(function (verify:String->(String->Dynamic->Void)->Void ) : Void {})
+  public function new(options:Dynamic, verify:String->(String->Dynamic->Void)->Void);
 }
