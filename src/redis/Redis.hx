@@ -101,17 +101,21 @@ typedef RedisClient = {
   function hgetall(k:String,cb:MultiReply):Void;
 
   // sorted sets
-  function zadd(k:String,s:Int,m:String,cb:IntegerReply):Void;
+  function zadd(k:String,s:Float,m:String,cb:IntegerReply):Void;
   function zrem(k:String,m:String,cb:IntegerReply):Void;
-  function zincrby(k:String,i:Int,m:String,cb:IntegerReply):Void;
+  function zincrby(k:String,i:Float,m:String,cb:BulkReply):Void;
   function zrank(k:String,m:String,cb:BulkReply):Void;
   function zrevrank(k:String,m:String,cb:BulkReply):Void;
-  //function zrange(k:String,s:Int,e:Int,?scores:Bool,cb:MultiReply):Void;
-  function zrange(k:String,s:Int,e:Int,?scores:String,cb:MultiReply):Void;
-  function zrevrange(k:String,s:Int,e:Int,?scores:String,cb:MultiReply):Void;
-  function zrangebyscore(k:String,min:Int,max:Int,cb:MultiReply):Void;
-  function zremrangebyrank(k:String,s:Int,e:Int,cb:IntegerReply):Void;
-  function zremrangebyscore(k:String,min:Int,max:Int,cb:IntegerReply):Void;
+  //function zrange(k:String,s:Float,e:Float,?scores:Bool,cb:MultiReply):Void;
+  function zrange(k:String,s:Float,e:Float,?scores:String,cb:MultiReply):Void;
+  function zrevrange(k:String,s:Float,e:Float,?scores:String,cb:MultiReply):Void;
+  @:overload(function(k:Dynamic,f:String,cb:BulkReply):Void {})
+  @:overload(function(k:String,min:String,max:String,cb:MultiReply):Void {})
+  @:overload(function(k:String,min:String,max:String,scores:String,cb:MultiReply):Void {})
+  @:overload(function(k:String,min:String,max:String,limit:String,offset:Int,count:Int,cb:MultiReply):Void {})
+  function zrangebyscore(k:String,min:Float,max:Float,cb:MultiReply):Void;
+  function zremrangebyrank(k:String,s:Float,e:Float,cb:IntegerReply):Void;
+  function zremrangebyscore(k:String,min:Float,max:Float,cb:IntegerReply):Void;
   function zcard(k:String,cb:IntegerReply):Void;
   function zscore(k:String,e:String,cb:BulkReply):Void;
   function zunionstore(prms:Array<Dynamic>,cb:IntegerReply):Void;
@@ -138,7 +142,12 @@ typedef RedisClient = {
 
 
 extern class Redis {
+
+  public static inline var INFINITY:String = "+inf";
+  public static inline var NEGATIVE_INFINITY:String = "-inf";
   public static inline var SHOW_SCORES:String = "WITHSCORES";
+  public static inline var LIMIT:String = "LIMIT";
+
   @:overload(function(port:Int, host:String, ?options:Dynamic):RedisClient {})
   public function createClient(port:Int, host:String) : RedisClient;
 
