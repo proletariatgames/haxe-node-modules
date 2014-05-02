@@ -114,7 +114,7 @@ typedef RedisClient = {
   @:overload(function(k:String,min:String,max:String,scores:String,cb:MultiReply):Void {})
   @:overload(function(k:String,min:String,max:String,limit:String,offset:Int,count:Int,cb:MultiReply):Void {})
   function zrangebyscore(k:String,min:Float,max:Float,cb:MultiReply):Void;
-  function zremrangebyrank(k:String,s:Float,e:Float,cb:IntegerReply):Void;
+  function zremrangebyrank(k:String,s:Int,e:Int,cb:IntegerReply):Void;
   function zremrangebyscore(k:String,min:Float,max:Float,cb:IntegerReply):Void;
   function zcard(k:String,cb:IntegerReply):Void;
   function zscore(k:String,e:String,cb:BulkReply):Void;
