@@ -89,6 +89,8 @@ extern class Express {
 
   public function errorHandler (options : Dynamic) : MiddleWare;
 
+  @:overload(function(format:String) : MiddleWare {})
+  @:overload(function(options:Dynamic) : MiddleWare {})
   public function logger() : MiddleWare;
 
   // cannot name function "static", reserved in haxe
