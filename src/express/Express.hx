@@ -62,6 +62,7 @@ typedef Request = { > NodeHttpServerReq,
   public function sanitize() : Request;
   public function filter() : Request;
   public function validationErrors(?mapped:Bool) : Array<Dynamic>;
+  public function pipe(to:Dynamic):Dynamic;
 }
 
 typedef Response = { > NodeHttpServerResp,
