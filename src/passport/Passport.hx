@@ -55,3 +55,11 @@ extern class LocalAPIKeyStrategy extends Strategy {
   @:overload(function (verify:String->(String->Dynamic->Void)->Void ) : Void {})
   public function new(options:Dynamic, verify:String->(String->Dynamic->Void)->Void);
 }
+
+@:native("GoogleStrategy")
+extern class GoogleStrategy extends passport.Strategy {
+  @:overload(function (verify:String->Dynamic->(String->Dynamic->Void)->Void ) : Void {})
+  public function new(options:Dynamic, verify:String->Dynamic->(String->Dynamic->Void)->Void);
+  public function saveAssociation(handler:(Dynamic->Dynamic->String->String->Int->(Dynamic->Void)->Void)) : Void;
+  public function loadAssociation(handler:(Dynamic->(Dynamic->Dynamic->Dynamic->Dynamic->Void)->Void)) : Void;
+}
