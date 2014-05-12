@@ -13,6 +13,10 @@ typedef Request = { > NodeHttpServerReq,
   // Passport
   var user : Dynamic;
 
+  // IPs
+  var ip : String;
+  var ips : Array<String>;
+
   // Validator functions
   public function check(field:String, ?errorMsg:String) : Request;
   public function validate(field:String, ?errorMsg:String) : Request;
