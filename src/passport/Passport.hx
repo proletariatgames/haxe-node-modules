@@ -63,3 +63,9 @@ extern class GoogleStrategy extends passport.Strategy {
   public function saveAssociation(handler:(Dynamic->Dynamic->String->String->Int->(Dynamic->Void)->Void)) : Void;
   public function loadAssociation(handler:(Dynamic->(Dynamic->Dynamic->Dynamic->Dynamic->Void)->Void)) : Void;
 }
+
+@:native("GoogleOAuthStrategy")
+extern class GoogleOAuthStrategy extends passport.Strategy {
+  @:overload(function (verify:String->String->Dynamic->(String->Dynamic->Void)->Void ) : Void {})
+  public function new(options:Dynamic, verify:String->String->Dynamic->(String->Dynamic->Void)->Void);
+}
