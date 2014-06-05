@@ -68,11 +68,17 @@ typedef RedisClient = {
   function rpoplpush(sk:String,dk:String,cb:BulkReply):Void;
 
   // sets
+  @:overload(function (k:String,v:Dynamic,cb:IntegerReply):Void {})
+  @:overload(function (k:String,v:Array<Dynamic>,cb:IntegerReply):Void {})
+  @:overload(function (k:String,v:Array<String>,cb:IntegerReply):Void {})
   function sadd(k:String,v:String,cb:IntegerReply):Void;
+  @:overload(function (k:String,v:Dynamic,cb:IntegerReply):Void {})
   function srem(k:String,v:String,cb:IntegerReply):Void;
   function spop(k:String,cb:BulkReply):Void;
+  @:overload(function (sk:String,dk:String,member:Dynamic,cb:IntegerReply):Void {})
   function smove(sk:String,dk:String,member:String,cb:IntegerReply):Void;
   function scard(k:String,cb:IntegerReply):Void;
+  @:overload(function (k:String,v:Dynamic,cb:IntegerReply):Void {})
   function sismember(k:String,m:String,cb:IntegerReply):Void;
   function sinter(k1:String,k2:String,cb:MultiReply):Void;
   function sinterstore(dst:String,k1:String,k2:String,cb:StatusReply):Void;
