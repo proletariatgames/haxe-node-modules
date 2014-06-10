@@ -73,6 +73,8 @@ typedef RedisClient = {
   @:overload(function (k:String,v:Array<String>,cb:IntegerReply):Void {})
   function sadd(k:String,v:String,cb:IntegerReply):Void;
   @:overload(function (k:String,v:Dynamic,cb:IntegerReply):Void {})
+  @:overload(function (k:String,v:Array<Dynamic>,cb:IntegerReply):Void {})
+  @:overload(function (k:String,v:Array<String>,cb:IntegerReply):Void {})
   function srem(k:String,v:String,cb:IntegerReply):Void;
   function spop(k:String,cb:BulkReply):Void;
   @:overload(function (sk:String,dk:String,member:Dynamic,cb:IntegerReply):Void {})
