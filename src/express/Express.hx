@@ -139,6 +139,7 @@ typedef Application = {
   public var all:Dynamic;
   public var get:Dynamic;
   public var post:Dynamic;
+  public var delete:Dynamic;
   public var param:Dynamic;
 }
 
