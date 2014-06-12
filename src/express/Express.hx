@@ -93,6 +93,8 @@ extern class Express {
   public function urlencoded() : MiddleWare;
   public function json() : MiddleWare;
 
+  @:overload(function (params : Dynamic) : MiddleWare {})
+  public function compress() : MiddleWare;
   public function session(params : Dynamic) : MiddleWare;
 
   public function router(routes : Dynamic->Void) : Void;
