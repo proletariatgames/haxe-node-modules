@@ -8,6 +8,6 @@
   "releasenote": "initial version",
   "contributors": [],
   "dependencies": {
-      "nodejs": "2.2.5"
+      "nodejs": "2.0.1"
     }
 }
