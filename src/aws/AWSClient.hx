@@ -30,6 +30,11 @@ class AWSClient {
     return untyped __js__("new this.m_aws.SNS()");
   }
 
+  // Create new S3 Service
+  public function createS3() : SNS {
+    return untyped __js__("new this.m_aws.S3()");
+  }
+
   // Create new SQS Service
   public function createSQS(?options:Dynamic) : SQS {
     if (options == null) {
