@@ -31,7 +31,7 @@ class AWSClient {
   }
 
   // Create new S3 Service
-  public function createS3() : SNS {
+  public function createS3() : S3 {
     return untyped __js__("new this.m_aws.S3()");
   }
 
