@@ -26,6 +26,7 @@ typedef Request = { > NodeHttpServerReq,
   public function isBefore(date:Dynamic) : Request;
   public function isEmail() : Request;
   public function isCreditCard() : Request;
+  public function isAuthenticated() : Bool;
   public function isUrl() : Request;
   public function isIPv4() : Request;
   public function isIPv6() : Request;
@@ -85,6 +86,8 @@ typedef Response = { > NodeHttpServerResp,
   @:overload(function (code : Int) : Void {})
   @:overload(function (code : Int, value : Dynamic) : Void {})
   function json(value : Dynamic) : Void;
+  @:overload(function (code : Int, url : String) : Void {})
+  function redirect(url : String) : Void;
 }
 
 extern class Express {
