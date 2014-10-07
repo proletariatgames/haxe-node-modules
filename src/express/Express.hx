@@ -88,6 +88,9 @@ typedef Response = { > NodeHttpServerResp,
   function json(value : Dynamic) : Void;
   @:overload(function (code : Int, url : String) : Void {})
   function redirect(url : String) : Void;
+  @:overload(function (filename : String) : Void {})
+  @:overload(function (filename : String, options : Dynamic) : Void {})
+  function sendfile(filename : String, options : Dynamic, cb:Dynamic->Void) : Void;
 }
 
 extern class Express {
