@@ -33,4 +33,12 @@ class NewRelic {
       m_newrelic.addCustomParameter(name, value);
     }
   }
+
+  public inline function createTracer(name:String, handle:Void->Void) : Void {
+    var func = handle;
+    if (m_newrelic) {
+      func = m_newrelic.createTracer(name, handle);
+    }
+    func();
+  }
 }
