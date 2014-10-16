@@ -54,6 +54,7 @@ typedef RedisClient = {
 
   // lists
   function lpush(k:String,v:String,cb:IntegerReply):Void;
+  @:overload(function (k:String,v:Array<String>,cb:IntegerReply):Void {})
   function rpush(k:String,v:String,cb:IntegerReply):Void;
   function llen(k:String,cb:IntegerReply):Void;
   function lrange(k:String,s:Int,e:Int,cb:MultiReply):Void;
@@ -115,8 +116,10 @@ typedef RedisClient = {
   function zrank(k:String,m:String,cb:BulkReply):Void;
   function zrevrank(k:String,m:String,cb:BulkReply):Void;
   //function zrange(k:String,s:Float,e:Float,?scores:Bool,cb:MultiReply):Void;
-  function zrange(k:String,s:Float,e:Float,?scores:String,cb:MultiReply):Void;
-  function zrevrange(k:String,s:Float,e:Float,?scores:String,cb:MultiReply):Void;
+  @:overload(function(k:String,s:Float,e:Float,cb:MultiReply):Void{})
+  function zrange(k:String,s:Float,e:Float,scores:String,cb:MultiReply):Void;
+  @:overload(function(k:String,s:Float,e:Float,cb:MultiReply):Void{})
+  function zrevrange(k:String,s:Float,e:Float,scores:String,cb:MultiReply):Void;
   @:overload(function(k:Dynamic,f:String,cb:BulkReply):Void {})
   @:overload(function(k:String,min:String,max:String,cb:MultiReply):Void {})
   @:overload(function(k:String,min:String,max:String,scores:String,cb:MultiReply):Void {})
