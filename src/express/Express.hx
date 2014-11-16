@@ -67,7 +67,7 @@ typedef Request = { > NodeHttpServerReq,
   public function sanitize() : Request;
   public function filter() : Request;
   public function validationErrors(?mapped:Bool) : Array<Dynamic>;
-  public function pipe(to:Dynamic):Dynamic;
+	public function pipe(dest:NodeWriteStream,?opts:{end:Bool}):Void;
 
   public function accepts(type:Dynamic) : Dynamic;
   public function acceptsEncoding(encoding:Dynamic) : Bool;
