@@ -29,7 +29,9 @@ class MailChimp {
       var params:Dynamic = {apikey: Node.process.env.MAILCHIMP_APIKEY,
                             id: listID,
                             email: emailParam};
-        m_mailchimp.lists.subscribe(params, onSuccess, onFailure);
+      m_mailchimp.lists.subscribe(params, onSuccess, onFailure);
+    } else {
+      onFailure(haxe.Json.stringify({error: "MailChimp API was not hooked up."}));
     }
   }
 
