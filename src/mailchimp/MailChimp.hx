@@ -23,7 +23,7 @@ class MailChimp {
   public function setup() : Void {
   }
 
-  public inline function listSubscribe(email:String, listID:String, onSuccess:String->Void, onFailure:String->Void) : Void {
+  public inline function listSubscribe(email:String, listID:String, onSuccess:Dynamic->Void, onFailure:Dynamic->Void) : Void {
     if (m_mailchimp) {
       var emailParam:Dynamic = {email: email};
       var params:Dynamic = {apikey: Node.process.env.MAILCHIMP_APIKEY,
@@ -31,7 +31,7 @@ class MailChimp {
                             email: emailParam};
       m_mailchimp.lists.subscribe(params, onSuccess, onFailure);
     } else {
-      onFailure(haxe.Json.stringify({error: "MailChimp API was not hooked up."}));
+      onFailure({error: "MailChimp API was not hooked up."});
     }
   }
 
