@@ -165,6 +165,7 @@ extern class Redis {
   public static inline var LIMIT:String = "LIMIT";
 
   @:overload(function(port:Int, host:String, ?options:Dynamic):RedisClient {})
+  @:overload(function(port:String, host:String, ?options:Dynamic):RedisClient {})
   public function createClient(port:Int, host:String) : RedisClient;
 
   public var debug_mode : Bool;
