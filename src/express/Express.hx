@@ -76,51 +76,31 @@ typedef Request = { > NodeHttpServerReq,
 }
 
 typedef Response = { > NodeHttpServerResp,
-  function set(header:String, value:Dynamic) : Void;
-  function status(code:Int) : Void;
-  @:overload(function () : Void {})
-  @:overload(function (code : Int) : Void {})
-  @:overload(function (code : Int, value : Dynamic) : Void {})
-  function send(value : Dynamic) : Void;
-  @:overload(function () : Void {})
-  @:overload(function (code : Int) : Void {})
-  @:overload(function (code : Int, value : Dynamic) : Void {})
-  function json(value : Dynamic) : Void;
-  @:overload(function (code : Int, url : String) : Void {})
-  function redirect(url : String) : Void;
-  @:overload(function (filename : String) : Void {})
-  @:overload(function (filename : String, options : Dynamic) : Void {})
-  function sendfile(filename : String, options : Dynamic, cb:Dynamic->Void) : Void;
+  function status(code : Int) : Response;
+  @:overload(function (multiple : Dynamic) : Void {})
+  function set(header : String, value : Dynamic) : Void;
+  function get(field : String) : Void;
+  function cookie(name : String, value : Dynamic, ?options : Dynamic) : Void;
+  function clearCookie(name : String, ?options : Dynamic) : Void;
+  function redirect(?code : Int, url : String) : Void;
+  function location(url : String) : Void;
+  function send(?value : Dynamic) : Void;
+  function json(?value : Dynamic) : Void;
+  function jsonp(?value : Dynamic) : Void;
+  function type(type : String) : Void;
+  function format(object : Dynamic) : Void;
+  function attachment(?filename : Dynamic) : Void;
+  function sendfile(filename : String, ?options : Dynamic, ?cb : Dynamic->Void) : Void;
+  function sendStatus(code : Int) : Void;
+  function download(path : String, ?filename : String, ?cb : Dynamic->Void) : Void;
+  function links(object : Dynamic) : Void;
+  var locals(default, null) : Dynamic;
+  function render(view : String, ?locals : Dynamic, ?cb : Dynamic->String->Void) : Void;
+  function vary(value : String) : Response;
+  var headersSent(default, null) : Bool;
 }
 
 extern class Express {
-  public function cookieParser() : MiddleWare;
-
-  public function urlencoded() : MiddleWare;
-  public function json() : MiddleWare;
-
-  @:overload(function (params : Dynamic) : MiddleWare {})
-  public function compress() : MiddleWare;
-  public function session(params : Dynamic) : MiddleWare;
-
-  public function router(routes : Dynamic->Void) : Void;
-
-  public function errorHandler (options : Dynamic) : MiddleWare;
-
-  @:overload(function(format:String) : MiddleWare {})
-  @:overload(function(options:Dynamic) : MiddleWare {})
-  public function logger() : MiddleWare;
-
-  // cannot name function "static", reserved in haxe
-  //public function static (path : String, ?options : Dynamic) : MiddleWare;
-
-  inline public static function static_(exp : Express, path : String, ?option : Dynamic) : MiddleWare {
-    var x = exp;
-    var p = path;
-    var o = option;
-    return untyped __js__("x.static(p, o)");
-  }
-
 }
 
 typedef Application = {
@@ -136,9 +116,6 @@ typedef Application = {
   public function enabled(name:String) : Bool;
 
   public function disabled(name:String) : Bool;
-
-  @:overload(function(fn: Void -> Void) : Application {})
-  public function configure(env:String, fn:Void -> Void) : Application;
 
   public function listen(port:Int, ?address:String) :Void;
 
