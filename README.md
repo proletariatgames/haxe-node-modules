@@ -13,3 +13,4 @@ Supported Modules
 | pg         | 2.11.1         |
 | redis      | 0.10.1         |
 | node-uuid  | 1.4.1          |
+| nodemailer | 1.3.0          |
