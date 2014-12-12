@@ -35,6 +35,12 @@ typedef RedisClient = {
   function flushdb(cb:StatusReply):Void;
   function flushall(cb:StatusReply):Void;
 
+  // scan
+  @:overload(function (cursor:String,match:String,pattern:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (cursor:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (cursor:String,match:String,pattern:String,cb:MultiReply):Void {})
+  function scan(cursor:String,cb:MultiReply):Void;
+
   // strings
   function set(k:String,v:String,cb:Err->Bool->Void):Void;
   function get(k:String,cb:StatusReply):Void;
