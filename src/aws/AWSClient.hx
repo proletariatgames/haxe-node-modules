@@ -43,4 +43,12 @@ class AWSClient {
     return untyped __js__("new this.m_aws.SQS(options)");
   }
 
+  // Create new DynamoDB
+  public function createDynamoDB(?options:Dynamic) : DynamoDB {
+    if (options == null) {
+      options = {};
+    }
+    return untyped __js__("new this.m_aws.DynamoDB(options)");
+  }
+
 }
