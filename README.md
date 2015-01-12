@@ -14,3 +14,5 @@ Supported Modules
 | redis      | 0.10.1         |
 | node-uuid  | 1.4.1          |
 | nodemailer | 1.3.0          |
+| webpurify  | 0.8.3          |
+| backoff    | 2.4.1          |
