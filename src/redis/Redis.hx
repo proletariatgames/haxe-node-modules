@@ -97,6 +97,14 @@ typedef RedisClient = {
   function sdiffstore(dst:String,k1:String,k2:String,cb:StatusReply):Void;
   function smembers(k:String,cb:MultiReply):Void;
   function srandmember(k:String,cb:BulkReply):Void;
+  @:overload(function (key:Dynamic,cursor:String,match:String,pattern:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (key:String,cursor:String,match:String,pattern:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (key:Dynamic,cursor:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (key:String,cursor:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (key:Dynamic,cursor:String,match:String,pattern:String,cb:MultiReply):Void {})
+  @:overload(function (key:String,cursor:String,match:String,pattern:String,cb:MultiReply):Void {})
+  @:overload(function (key:Dynamic,cursor:String,cb:MultiReply):Void {})
+  function sscan(key:String,cursor:String,cb:MultiReply):Void;
 
   // hash
   function hset(k:String,f:String,v:String,cb:IntegerReply):Void;
