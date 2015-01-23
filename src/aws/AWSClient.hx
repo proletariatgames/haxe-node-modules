@@ -51,4 +51,11 @@ class AWSClient {
     return untyped __js__("new this.m_aws.DynamoDB(options)");
   }
 
+  // Create new Kinesis
+  public function createKinesis(?options:Dynamic) : Kinesis {
+    if (options == null) {
+      options = {};
+    }
+    return untyped __js__("new this.m_aws.Kinesis(options)");
+  }
 }
