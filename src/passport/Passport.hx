@@ -18,21 +18,12 @@ extern class Passport {
   public function session() : MiddleWare;
 
   @:overload(function (strategy:Array<String>, options:Dynamic) : MiddleWare {})
-  @:overload(function (strategy:Array<String>, callback:String -> Dynamic -> Dynamic -> Void) : MiddleWare {})
-  @:overload(function (strategy:Array<String>, options:Dynamic=null, callback:String -> Dynamic -> Dynamic -> Void=null) : MiddleWare {})
+  @:overload(function (strategy:Array<String>) : MiddleWare {})
   @:overload(function (strategy:String, options:Dynamic) : MiddleWare {})
-  @:overload(function (strategy:String, callback:String -> Dynamic -> Dynamic -> Void) : MiddleWare {})
-  public function authenticate(strategy:String, options:Dynamic=null,
-                               callback:String -> Dynamic -> Dynamic -> Void=null) : MiddleWare;
-
-  @:overload(function (strategy:String, options:Dynamic) : MiddleWare {})
-  @:overload(function (strategy:String, callback:String -> Dynamic -> Dynamic -> Void) : MiddleWare {})
-  public function authorize (strategy:String, options:Dynamic=null,
-                             callback:String -> Dynamic -> Dynamic -> Void=null) : MiddleWare;
+  public function authenticate(strategy:String) : MiddleWare;
 
   public function serializeUser (callback:Dynamic->(String->Dynamic->Void)->Void) : Void;
   public function deserializeUser (callback:Dynamic->(String->Dynamic->Void)->Void) : Void;
-
 }
 
 extern class Strategy {
@@ -40,7 +31,9 @@ extern class Strategy {
 
 @:native("BearerStrategy")
 extern class BearerStrategy extends Strategy {
+  @:overload(function (verify:String->(Dynamic->Dynamic->Void)->Void) : Void {})
   @:overload(function (verify:String->(Dynamic->Dynamic->Dynamic->Void)->Void) : Void {})
+  @:overload(function (options:Dynamic, verify:String->(Dynamic->Dynamic->Void)->Void) : Void {})
   public function new(options:Dynamic, verify:String->(Dynamic->Dynamic->Dynamic->Void)->Void);
 }
 
