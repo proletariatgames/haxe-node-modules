@@ -17,11 +17,24 @@ typedef Request = { > NodeHttpServerReq,
   var ip : String;
   var ips : Array<String>;
 
+  // headers
+  public function get(header:String) : Dynamic;
+
+  // piping
+  public function pipe(dest:NodeWriteStream,?opts:{end:Bool}):Void;
+
+  // accept control
+  public function accepts(type:Dynamic) : Dynamic;
+  public function acceptsEncoding(encoding:Dynamic) : Bool;
+  public function acceptsCharset(charset:Dynamic) : Bool;
+  public function acceptsLanguage(lang:Dynamic) : Bool;
+
   // Validator functions
-  public function check(field:String, ?errorMsg:String) : Request;
-  public function validate(field:String, ?errorMsg:String) : Request;
-  public function assert(field:String, ?errorMsg:String) : Request;
+  public function checkBody(field:String, ?errorMsg:String) : Request;
+  public function checkParams(field:String, ?errorMsg:String) : Request;
+  public function checkQuery(field:String, ?errorMsg:String) : Request;
   public function error (msg:String) : Request;
+  public function notBadWord() : Request;
   public function isAfter(date:Dynamic) : Request;
   public function isBefore(date:Dynamic) : Request;
   public function isEmail() : Request;
@@ -42,6 +55,8 @@ typedef Request = { > NodeHttpServerReq,
   public function isDecimal() : Request;
   public function isDivisibleBy(n:Int) : Request;
   public function isFloat() : Request;
+  public function isAscii() : Request;
+  public function isLength(min:Int, max:Int) : Request;
   public function notNull() : Request;
   public function isNull() : Request;
   public function notEmpty() : Request;
@@ -62,17 +77,9 @@ typedef Request = { > NodeHttpServerReq,
   public function notIn(options:Dynamic) : Request;
   public function min(val:Int) : Request;
   public function max(val:Int) : Request;
-  public function get(header:String) : Dynamic;
-
   public function sanitize() : Request;
   public function filter() : Request;
   public function validationErrors(?mapped:Bool) : Array<Dynamic>;
-  public function pipe(dest:NodeWriteStream,?opts:{end:Bool}):Void;
-
-  public function accepts(type:Dynamic) : Dynamic;
-  public function acceptsEncoding(encoding:Dynamic) : Bool;
-  public function acceptsCharset(charset:Dynamic) : Bool;
-  public function acceptsLanguage(lang:Dynamic) : Bool;
 }
 
 typedef Response = { > NodeHttpServerResp,
