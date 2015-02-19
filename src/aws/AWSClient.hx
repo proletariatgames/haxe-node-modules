@@ -58,4 +58,13 @@ class AWSClient {
     }
     return untyped __js__("new this.m_aws.Kinesis(options)");
   }
+
+  // Create new CloudWatch
+  public function createCloudWatch(?options:Dynamic) : CloudWatch {
+    if (options == null) {
+      options = {};
+    }
+    return untyped __js__("new this.m_aws.CloudWatch(options)");
+
+  }
 }
