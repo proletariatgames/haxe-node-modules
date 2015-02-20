@@ -89,7 +89,8 @@ typedef Response = { > NodeHttpServerResp,
   function get(field : String) : Void;
   function cookie(name : String, value : Dynamic, ?options : Dynamic) : Void;
   function clearCookie(name : String, ?options : Dynamic) : Void;
-  function redirect(?code : Int, url : String) : Void;
+  @:overload(function (url : String, code : Int) : Void {})
+  function redirect(url : String) : Void;
   function location(url : String) : Void;
   function send(?value : Dynamic) : Void;
   function json(?value : Dynamic) : Void;
