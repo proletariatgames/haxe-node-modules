@@ -43,6 +43,7 @@ typedef RedisClient = {
 
   // strings
   function set(k:String,v:String,cb:Err->Bool->Void):Void;
+  @:overload(function (k:Dynamic,cb:StatusReply):Void {})
   function get(k:String,cb:StatusReply):Void;
   function incr(k:String,cb:IntegerReply):Void;
   function incrby(k:String,by:Int,cb:IntegerReply):Void;
