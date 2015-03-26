@@ -29,6 +29,7 @@ typedef RedisClient = {
   function renamenx(k:String,nk:String,cb:StatusReply):Void;
   function dbsize(cb:IntegerReply):Void;
   function expire(k:String,secs:Int,cb:IntegerReply):Void;
+  function pttl(k:String,cb:IntegerReply):Void;
   function ttl(k:String,cb:IntegerReply):Void;
   function select(index:Int,cb:StatusReply):Void;
   function move(k:String,index:Int,cb:IntegerReply):Void;
@@ -115,6 +116,7 @@ typedef RedisClient = {
   function hsetnx(k:String,f:String,v:String,cb:IntegerReply):Void;
   @:overload(function(k:String, f:Dynamic, cb:StatusReply):Void {})
   function hmset(k:String, f:Array<String>,cb:StatusReply):Void;
+  @:overload(function(k:Dynamic,f:Array<String>,cb:MultiReply):Void {})
   function hmget(k:String, f:Array<String>,cb:MultiReply):Void;
   function hincrby(k:String,f:String,v:Int,cb:IntegerReply):Void;
   function hexists(k:String,f:String,cb:IntegerReply):Void;
