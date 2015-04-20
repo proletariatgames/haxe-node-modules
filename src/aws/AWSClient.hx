@@ -25,6 +25,11 @@ class AWSClient {
     return m_aws.config;
   }
 
+  // Create new Endpoint
+  public function createEndpoint(endpoint:String) : Endpoint {
+    return untyped __js__("new this.m_aws.Endpoint(endpoint)");
+  }
+
   // Create new SNS Service
   public function createSNS() : SNS {
     return untyped __js__("new this.m_aws.SNS()");
