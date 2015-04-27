@@ -44,7 +44,7 @@ typedef RedisClient = {
 
   // strings
   function set(k:String,v:String,cb:Err->Bool->Void):Void;
-  @:overload(function (k:Dynamic,cb:StatusReply):Void {})
+  @:overload(function (k:Dynamic,cb:BulkReply):Void {})
   function get(k:String,cb:StatusReply):Void;
   function incr(k:String,cb:IntegerReply):Void;
   function incrby(k:String,by:Int,cb:IntegerReply):Void;
@@ -53,6 +53,7 @@ typedef RedisClient = {
   function setnx(k:String,v:String,cb:Err->Int->Void):Void;
   function mset(ks:Array<Dynamic>,cb:Err->Bool->Void):Void;
   function msetnx(ks:Array<Dynamic>,cb:Err->Int->Void):Void;
+  @:overload(function (ks:Array<Dynamic>,cb:Err->Array<Dynamic>->Void):Void {})
   function mget(ks:Array<String>,cb:Err->Array<String>->Void):Void;
   function getset(k:String,v:String,cb:StatusReply):Void;
   function append(k:String,v:String,cb:IntegerReply):Void;
