@@ -125,6 +125,7 @@ typedef RedisClient = {
   function hlen(k:String,cb:IntegerReply):Void;
   function hkeys(k:String,cb:MultiReply):Void;
   function hvals(k:String,cb:MultiReply):Void;
+  @:overload(function(k:Dynamic,cb:MultiReply):Void {})
   function hgetall(k:String,cb:MultiReply):Void;
 
   // sorted sets
