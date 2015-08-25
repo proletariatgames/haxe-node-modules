@@ -16,3 +16,4 @@ Supported Modules
 | nodemailer | 1.3.0          |
 | webpurify  | 0.8.3          |
 | backoff    | 2.4.1          |
+| amqplib    | 0.3.2          |
