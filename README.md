@@ -17,3 +17,4 @@ Supported Modules
 | webpurify  | 0.8.3          |
 | backoff    | 2.4.1          |
 | amqplib    | 0.3.2          |
+| tmi        | 0.0.21         |
