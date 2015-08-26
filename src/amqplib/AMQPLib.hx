@@ -24,6 +24,7 @@ typedef Channel = {
   function bindExchange(destination:String, source:String, pattern:String, args:Dynamic, cb:Err->Dynamic->Void):Void;
   function unbindExchange(destination:String, source:String, pattern:String, args:Dynamic, cb:Err->Dynamic->Void):Void;
   function publish(exchange:String, routingKey:String, content:NodeBuffer, options:Dynamic):Void;
+  @:overload(function(queue:String, content:NodeBuffer):Void {})
   function sendToQueue(queue:String, content:NodeBuffer, options:Dynamic):Void;
   function consume(queue:String, callback:Message->Void, options:Dynamic, cb:Err->Dynamic->Void):Void;
   function cancel(consumerTag:String, cb:Err->Dynamic->Void):Void;
@@ -44,7 +45,8 @@ typedef Connection = {
   function createConfirmChannel(cb:Err->Channel->Void):Void;
 }
 
-typedef AMPQLib = {
+@:jsRequire('amqplib/callback_api')
+extern class AMQPLib {
   @:overload(function(url:String, cb:Err->Connection->Void):Void {})
-  function connect(url:String, socketOptions:Dynamic, cb:Err->Connection->Void) : Void;
+  static function connect(url:String, socketOptions:Dynamic, cb:Err->Connection->Void) : Void;
 }
