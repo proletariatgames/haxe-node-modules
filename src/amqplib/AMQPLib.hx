@@ -4,6 +4,12 @@ import js.Node;
 
 typedef Err = Dynamic;
 
+typedef Ok = {
+  public var queue:String;
+  public var messageCount:Int;
+  public var consumerCount:Int;
+}
+
 typedef Message = {
   public var content:NodeBuffer;
   public var fields:Dynamic;

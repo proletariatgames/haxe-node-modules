@@ -23,6 +23,18 @@ typedef Options = {
   var channels : Array<String>;
 };
 
+typedef User = {
+  var username : String;
+  // 'display-name' : String;
+  // 'user-type' : String;
+  var subscriber : Bool;
+  var turbo : Bool;
+
+  var color : String;
+  var emotes : Dynamic;
+  // 'emotes-raw' : String;
+}
+
 @:jsRequire("tmi.js", "client")
 extern class Client
 {
