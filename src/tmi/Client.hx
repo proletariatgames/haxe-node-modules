@@ -26,11 +26,11 @@ typedef Options = {
 typedef User = {
   var username : String;
   // 'display-name' : String;
-  // 'user-type' : String;
+  // 'user-type' : String; // empty or mod, global_mod, admin, staff
   var subscriber : Bool;
   var turbo : Bool;
 
-  var color : String;
+  var color : String; // empty or #RRGGBB
   var emotes : Dynamic;
   // 'emotes-raw' : String;
 }
