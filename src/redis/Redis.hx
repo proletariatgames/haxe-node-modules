@@ -167,7 +167,9 @@ typedef RedisClient = {
   function once(event:String, callback:Dynamic) : Void;
   function removeListener(event:String, callback:Dynamic) : Void;
   function subscribe(channel:String) : Void;
+  function psubscribe(pattern:String) : Void;
   function unsubscribe(channel:String) : Void;
+  function punsubscribe(pattern:String) : Void;
   function publish(channel:String, value:String, cb:IntegerReply) : Void;
 
   function quit():Void;
