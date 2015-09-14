@@ -1,5 +1,7 @@
 package redlock;
 
+import redis.Redis;
+
 typedef Err = Dynamic;
 typedef LockCallback = Err->Lock->Void;
 
@@ -21,7 +23,7 @@ extern class Lock {
 
 @:jsRequire('redlock')
 extern class Redlock {
-  public function new(redisClients:Array<Dynamic>, options:Options);
+  public function new(redisClients:Array<RedisClient>, options:Options);
 
   public function lock(resource:String, ttl:Int, cb:LockCallback) : Void;
   public function unlock(lock:Lock, cb:Void->Void) : Void;
