@@ -127,6 +127,10 @@ typedef RedisClient = {
   function hvals(k:String,cb:MultiReply):Void;
   @:overload(function(k:Dynamic,cb:MultiReply):Void {})
   function hgetall(k:String,cb:MultiReply):Void;
+  @:overload(function (k:String,cursor:String,match:String,pattern:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (k:String,cursor:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (k:String,cursor:String,match:String,pattern:String,cb:MultiReply):Void {})
+  function hscan(k:String,cursor:String,cb:MultiReply):Void;
 
   // sorted sets
   function zadd(k:String,s:Float,m:String,cb:IntegerReply):Void;
