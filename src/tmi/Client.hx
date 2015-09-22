@@ -5,22 +5,22 @@ import js.Node;
 // tmi.js is a Twitch IRC client
 
 typedef Options = {
-  var options : {
-    var debug : Bool; // show debug messages in console
+  @:optional var options : {
+    @:optional var debug : Bool; // show debug messages in console
   };
-  var connection : {
-    var random : String; // 'chat', 'group', or 'event'
-    var server : String;
-    var port : Int;
-    var reconnect : Bool; // reconnect when disconnected
-    var timeout : Int; // ms to wait before disconnecting from unresponsive server
+  @:optional var connection : {
+    @:optional var random : String; // 'chat', 'group', or 'event'
+    @:optional var server : String;
+    @:optional var port : Int;
+    @:optional var reconnect : Bool; // reconnect when disconnected
+    @:optional var timeout : Int; // ms to wait before disconnecting from unresponsive server
   };
   var identity : {
     var username : String; // twitch user name
     var password : String; // oauth token (do not use user password)
   };
   // list of channels to join when connected
-  var channels : Array<String>;
+  @:optional var channels : Array<String>;
 };
 
 typedef User = {
