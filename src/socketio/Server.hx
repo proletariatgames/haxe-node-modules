@@ -6,6 +6,7 @@ import js.Node;
 extern class Server
 {
   public function new(srv:Dynamic, ?opts:Dynamic);
+  public function adapter(adapter:Dynamic) : Void;
 
   // EventEmitter fields
   function addListener(event:String,fn:NodeListener):Dynamic;
