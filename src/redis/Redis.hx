@@ -164,6 +164,10 @@ typedef RedisClient = {
   function zscore(k:String,e:String,cb:BulkReply):Void;
   function zunionstore(prms:Array<Dynamic>,cb:IntegerReply):Void;
   function zinterstore(prms:Array<Dynamic>,cb:IntegerReply):Void;
+  @:overload(function (key:String,cursor:String,match:String,pattern:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (key:String,cursor:String,count:String,number:Int,cb:MultiReply):Void {})
+  @:overload(function (key:String,cursor:String,match:String,pattern:String,cb:MultiReply):Void {})
+  function zscan(key:String,cursor:String,cb:MultiReply):Void;
   function sort(prms:Array<Dynamic>,cb:MultiReply):Void;
 
   // Multi
@@ -186,13 +190,14 @@ typedef RedisClient = {
   public var connected:Bool;
 }
 
-
 extern class Redis {
 
   public static inline var INFINITY:String = "+inf";
   public static inline var NEGATIVE_INFINITY:String = "-inf";
   public static inline var SHOW_SCORES:String = "WITHSCORES";
   public static inline var LIMIT:String = "LIMIT";
+  public static inline var MATCH:String = "MATCH";
+  public static inline var COUNT:String = "COUNT";
 
   @:overload(function(port:Int, host:String, ?options:Dynamic):RedisClient {})
   @:overload(function(port:String, host:String, ?options:Dynamic):RedisClient {})
