@@ -65,6 +65,8 @@ extern class GoogleOAuthStrategy extends passport.Strategy {
 
 @:native("TwitchStrategy")
 extern class TwitchStrategy extends passport.Strategy {
+  @:overload(function (verify:Dynamic->String->String->Dynamic->(String->Dynamic->Void)->Void ) : Void {})
+  @:overload(function (options:Dynamic, verify:Dynamic->String->String->Dynamic->(String->Dynamic->Void)->Void) : Void {})
   @:overload(function (verify:String->String->Dynamic->(String->Dynamic->Void)->Void ) : Void {})
   public function new(options:Dynamic, verify:String->String->Dynamic->(String->Dynamic->Void)->Void);
 }
