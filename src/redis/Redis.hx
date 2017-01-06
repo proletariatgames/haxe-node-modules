@@ -28,6 +28,7 @@ typedef RedisClient = {
   function rename(k:String,nk:String,cb:StatusReply):Void;
   function renamenx(k:String,nk:String,cb:StatusReply):Void;
   function dbsize(cb:IntegerReply):Void;
+  function pexpire(k:String,ms:Int,cb:IntegerReply):Void;
   function expire(k:String,secs:Int,cb:IntegerReply):Void;
   function pttl(k:String,cb:IntegerReply):Void;
   function ttl(k:String,cb:IntegerReply):Void;
@@ -43,6 +44,9 @@ typedef RedisClient = {
   function scan(cursor:String,cb:MultiReply):Void;
 
   // strings
+  @:overload(function (k:String,v:String,nx:String,ex:String,ext:Int,cb:BulkReply):Void {})
+  @:overload(function (k:String,v:String,ex:String,ext:Int,cb:Err->Bool->Void):Void {})
+  @:overload(function (k:String,v:String,nx:String,cb:BulkReply):Void {})
   function set(k:String,v:String,cb:Err->Bool->Void):Void;
   @:overload(function (k:Dynamic,cb:BulkReply):Void {})
   function get(k:String,cb:StatusReply):Void;
@@ -159,6 +163,9 @@ typedef RedisClient = {
   @:overload(function(k:String,max:String,min:String,limit:String,offset:Int,count:Int,cb:MultiReply):Void {})
   function zrevrangebyscore(k:String,max:Float,min:Float,cb:MultiReply):Void;
   function zremrangebyrank(k:String,s:Int,e:Int,cb:IntegerReply):Void;
+  @:overload(function(k:String,max:Float,min:String,cb:IntegerReply):Void {})
+  @:overload(function(k:String,max:String,min:Float,cb:IntegerReply):Void {})
+  @:overload(function(k:String,max:String,min:String,cb:IntegerReply):Void {})
   function zremrangebyscore(k:String,min:Float,max:Float,cb:IntegerReply):Void;
   function zcard(k:String,cb:IntegerReply):Void;
   function zscore(k:String,e:String,cb:BulkReply):Void;
