@@ -25,4 +25,6 @@ extern class Config {
 
   public function loadFromPath(path:String) : Void;
 
+  public function getCredentials(callback:String -> Dynamic -> Void) : Void;
+
 }
